@@ -16,7 +16,7 @@ function grid() {
         divElementX.style.width = "100%";
         divElementX.style.border = "1px solid gray";
         divElementX.style.minHeight ="5px";
-        //divElementX.style.minWidth ="5px";  
+        divElementX.style.minWidth ="5px";  
         divElementY.appendChild(divElementX);
       }
   
