@@ -1,17 +1,29 @@
-.container{
-    min-width: 300px;
-    min-height: 300px;
-    border : "1px solid gray";
-}
-
-.myDivX{
+#container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100px;
+    min-height: 100px;
+   
+  }
+  
+  #containerBtn {
+    display: flex;
+    justify-content: center;
+  }
+  .myDivX {
     border-style: solid;
     border-color: black;
-    border: 1px;
-}
+    border-width: 1px;
+  }
+  
+  h1{
+    text-align: center;
+  }
 
-.myDivX{
-    border-style: solid;
-    border-color: black;
-    border: 1px;
-}
+  button{
+    align-self: center;
+    align-items: center;
+    text-align: center;
+  }
