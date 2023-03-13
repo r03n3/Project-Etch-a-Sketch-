@@ -1,0 +1,17 @@
+.container{
+    min-width: 300px;
+    min-height: 300px;
+    border : "1px solid gray";
+}
+
+.myDivX{
+    border-style: solid;
+    border-color: black;
+    border: 1px;
+}
+
+.myDivX{
+    border-style: solid;
+    border-color: black;
+    border: 1px;
+}
