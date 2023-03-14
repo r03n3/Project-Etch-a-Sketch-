@@ -1,22 +1,29 @@
-function grid() {
-    const targetElement = document.getElementById("container");
 
-    for (let i = 0; i < 16; i++) {
+
+function buttonInput(){
+    let size = 16;
+    document.getElementById("size").addEventListener("click", function(){
+        let tableContainer = document.getElementById("container");
+        tableContainer.innerHTML= "";
+        size = prompt("Please enter the wished size for the grid", 16);
+        grid(size);
+    });
+}
+
+function grid(size) {
+    const targetElement = document.getElementById("container");
+    let cellSize = (400 - 2*size) / size; // size of a single gridcell based on the sizeparameter
+
+    for (let i = 0; i < size; i++) {
       const divElementY = document.createElement("div");
       divElementY.style.display = "flex";
-      divElementY.style.height = "calc(100% / 16)";
-      divElementY.style.width = "calc(100% / 16)";
-      divElementY.style.minHeight ="10px";
-      divElementY.style.minWidth ="10px";
-      //divElementY.style.border = "1px solid gray";
+      divElementY.style.height = "${cellSize}px";
+      divElementY.style.width = "400px"
   
-      for (let j = 0; j < 16; j++) {
+      for (let j = 0; j < size; j++) {
         const divElementX = document.createElement("div");
-        divElementX.style.height = "100%";
-        divElementX.style.width = "100%";
-        divElementX.style.border = "1px solid gray";
-        divElementX.style.minHeight ="10px";
-        divElementX.style.minWidth ="10px";
+        divElementX.style.height = "${cellSize}px";
+        divElementX.style.width = "${cellSize}px";
         divElementX.addEventListener("mouseover", function(){
             divElementX.style.backgroundColor ="black";
         });  
@@ -26,5 +33,5 @@ function grid() {
       targetElement.appendChild(divElementY);
     }
   }
-  
-  grid();
+  grid(16);
+buttonInput();
