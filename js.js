@@ -1,3 +1,26 @@
+let defineColor = 0;
+
+function colorGrid(divElement) {
+  divElement.addEventListener("mousedown", function() {
+    if (defineColor === 0) {
+      divElement.style.backgroundColor = "black";
+    } else if (defineColor === 1) {
+      divElement.style.backgroundColor = generateRandomColor();
+    } else if (defineColor === 2) {
+      divElement.style.backgroundColor = "white";
+    }
+  });
+}
+
+function generateRandomColor(){
+  let maxVal = 0xFFFFFF; // 16777215
+  let randomNumber = Math.random() * maxVal; 
+  randomNumber = Math.floor(randomNumber);
+  randomNumber = randomNumber.toString(16);
+  let randColor = randomNumber.padStart(6, 0);   
+  return `#${randColor.toUpperCase()}`
+}
+
 
 
 function buttonInput(){
@@ -9,18 +32,30 @@ function buttonInput(){
         while (size<=0 || size >200){
           size = prompt("Please enter a value between 1 and 200");
         }
-        grid(size);
+        grid(size, defineColor);
     });
 }
 
-function grid(size) {
+function buttonRainbowEraseBlack(){
+  document.getElementById("erase").addEventListener("click",function(){
+    defineColor = 2;
+  })
+  document.getElementById("rainbow").addEventListener("click",function(){
+    defineColor = 1;
+  })
+  document.getElementById("black").addEventListener("click", function(){
+    defineColor = 0;
+  });
+  return defineColor;
+}
+
+function grid(size, define) {
     const targetElement = document.getElementById("container");
     let cellSize = 400/size; 
     for (let i = 0; i < size; i++) {
       const divElementY = document.createElement("div");
       divElementY.style.display = "flex";
       divElementY.style.height = `${cellSize}px`;
-      divElementY
       divElementY.style.width = "400px"
 
   
@@ -28,14 +63,15 @@ function grid(size) {
         const divElementX = document.createElement("div");
         divElementX.style.height = `${cellSize}px`;
         divElementX.style.width = `${cellSize}px`;
-        divElementX.addEventListener("mouseover", function(){
-            divElementX.style.backgroundColor ="black";
-        });  
+        colorGrid(divElementX);        
         divElementY.appendChild(divElementX);
       }
   
       targetElement.appendChild(divElementY);
     }
   }
-  grid(16);
-buttonInput();
+
+  buttonInput();
+  buttonRainbowEraseBlack();
+  grid(16, defineColor);
+
